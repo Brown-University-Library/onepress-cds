@@ -448,8 +448,8 @@ body, a {
 }
 
 #primary #site_content_menu {
-    border : 1px solid yellow ;
-    margin-top : 150px ;
+    border : 0px solid yellow ;
+    margin-top : 50px ;
 }
 
 #primary #site_content_menu ul {
@@ -468,19 +468,16 @@ body, a {
 }
 /* ------- END CUSTOMIZABLE SITE MENU ---------- */
 
-/* ------ STYLE THE HERO IMAGE -------- */
-
-#hero_widget {
-    margin : 0px ;
-}
+/* ------ STYLE THE HERO WIDGET -------- */
 
 #hero_text {
     height : 50px ;
 }
 
 #hero_text h3 {
-    color : red ;
     padding : 40px ;
+    width : 100% ;
+    text-align : center ;
 }
 
 /* ------ END STYLE THE HERO IMAGE -------- */
