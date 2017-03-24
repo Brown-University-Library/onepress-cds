@@ -27,6 +27,11 @@ body, a {
     font-size: 14px;
 }
 
+#colophon {
+  background: white;
+}
+
+
 /* ------------- NAV MENU ------------ */
 
 @media screen and (min-width: 1140px) {
@@ -65,6 +70,18 @@ body, a {
 .onepress-menu li {
 	position: relative;
 }
+
+#site_content_menu {
+  border: 0;
+  margin-bottom: 30px;
+}
+
+#site_content_menu li {
+  text-transform: uppercase;
+  margin-right: 2em;
+  letter-spacing: 1px;
+}
+
 
 /* ------- make the top nav inline on desktop --------- */
 
