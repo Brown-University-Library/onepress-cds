@@ -71,17 +71,6 @@ body, a {
 	position: relative;
 }
 
-#site_content_menu {
-  border: 0;
-  margin-bottom: 30px;
-}
-
-#site_content_menu li {
-  text-transform: uppercase;
-  margin-right: 2em;
-  letter-spacing: 1px;
-}
-
 
 /* ------- make the top nav inline on desktop --------- */
 
@@ -427,6 +416,7 @@ body, a {
 }
 
 /* ------ END STYLE THE HERO IMAGE -------- */
+
 /*------- DROPDOWN MENUS ------------------ */
 
 li.menu-item-has-children {
@@ -449,6 +439,17 @@ li.menu-item-has-children:hover {
     display : block ; 
 }
 
+#site_content_menu {
+  border: 0;
+  margin-bottom: 30px;
+}
+
+#site_content_menu li {
+  text-transform: uppercase;
+  margin-right: 2em;
+  letter-spacing: 1px;
+}
+
 
 /* ------ FRONT PAGE TABLE OF EVENTS ------ */
 
@@ -460,3 +461,39 @@ li.menu-item-has-children:hover {
   padding-left: .3em ;
   padding-right: .3em ;
 }
+
+/* ------ PROJECT LIST USING CATLIST PLUGIN ------ */
+
+ul.project-list {
+  margin-left: 0;
+  padding-left: 0;
+  width: 100%;
+  float: left;
+  clear: both;
+}
+
+ul.project-list li {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+  float: left;
+  width: 33%;
+}
+
+ul.project-list li a {
+  text-align: left;
+  display: block;
+}
+
+/* 
+ul.project-list li a img {
+ 
+  float: left;
+} */
+
+ul.project-list li a:first-of-type {
+  height: 3rem;
+  font-style: italic;
+  padding-right: 1rem;
+}
+
