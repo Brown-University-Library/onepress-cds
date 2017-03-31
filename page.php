@@ -37,16 +37,15 @@ get_header(); ?>
 			</div>
 		</div>
 
-        <?php echo onepress_breadcrumb(); ?>        
-
+        <?php echo onepress_breadcrumb(); ?>
+        
+        <!-- hero goes here -->
+        <?php dynamic_sidebar( 'hero_image' ); ?>
 
 		<div id="content-inside" class="container no-sidebar">
 		
 		
-			<div id="primary" class="content-area">		
-			<!-- hero goes here -->
-				<?php dynamic_sidebar( 'hero_image' ); ?>
-					
+			<div id="primary" class="content-area">			
                 <div id="site_content_menu"> 
                     <ul>
                         <?php

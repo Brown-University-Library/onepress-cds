@@ -1,23 +1,23 @@
 /*
 Theme Name: CDS - Child of OnePress
 Description: CDS OnePress Theme
-Author: Kerri A. Hicks, Crystal Brusch, Brian Croxall, Patrick Rashleigh
+Author: Kerri A. Hicks
 Template: onepress
 Version: .2 beta
 */
 
 body, a {
-    color : #000 ;
+    color : #000 ; 
 }
 
 .page-header {
     padding: 7px 0px;
     background: #4E3629 ;
     border : 0px solid ;
-    margin : 0px ;
+    margin : 0px ; 
 }
 
-.site-header {
+.site-header { 
 	line-height: 25px ;
 }
 
@@ -27,87 +27,9 @@ body, a {
     font-size: 14px;
 }
 
-.content-area {
-    float : none ;
-}
-
-/*-----------------USER ADDED --------------*/
-
-/* Some global clean-up */
-
 #colophon {
   background: white;
 }
-
-#site_content_menu {
-  border: 0;
-  margin-bottom: 30px;
-}
-
-#site_content_menu li {
-  text-transform: uppercase;
-  margin-right: 2em;
-  letter-spacing: 1px;
-}
-
-/* Calendar styles (mostly dev) */
-
-.plain-calendar-listing,
-.plain-calendar-listing tr,
-.plain-calendar-listing th,
-.plain-calendar-listing td {
-	border: none;
-	background: none;
-	margin-left: 0;
-	padding-left: 0;
-        text-align: left;
-}
-
-.simcal-calendar {
-	border: 5px solid black;
-}
-
-
-/* Front page styles */
-
-.project-icon-list {
-  list-style-type: none;
-}
-
-.project-icon-list,
-.project-icon-list li {
-	margin: 0;
-	padding: 0;
-}
-
-.project-list,
-.project-list li {
-	margin: 0;
-	padding: 0;
-}
-
-.project-list li {
-	clear: both;
-	margin-bottom: 10px;
-}
-
-.project-list li img {
-	float: left;
-	margin-right: 10px;
-	margin-bottom: 10px;
-}
-
-.project-icon-list {
-	/* float: left; */
-	clear: both;
-}
-
-.project-icon-list li {
-	float: left;
-	margin-right: 10px;
-}
-/* ------------- END USER ADDED ------------ */
-
 
 
 /* ------------- NAV MENU ------------ */
@@ -126,7 +48,7 @@ body, a {
 }
 
 .onepress-menu {
-/*
+/* 
 	float: right;
  */
     float : none ;
@@ -149,15 +71,16 @@ body, a {
 	position: relative;
 }
 
+
 /* ------- make the top nav inline on desktop --------- */
 
 .onepress-menu > li {
     float : none ;
-    display : inline ;
+    display : inline ; 
 }
 
 .onepress-menu li:hover > ul, .onepress-menu li.sfHover > ul {
-    display : inline ;
+    display : inline ; 
 }
 
 .onepress-menu a {
@@ -205,7 +128,7 @@ body, a {
 }
 
 .onepress-menu a {
-/*
+/* 
 	font-family: "Raleway", Helvetica, Arial, sans-serif;
  */
 	text-decoration: none;
@@ -218,12 +141,12 @@ body, a {
 	text-transform: capitalize;
 	color: #666 ;
 	font-size: .8em ;
-	font-weight: normal ;
+	font-weight: normal ;	
 }
 
 .onepress-menu a:hover {
 	color: #666 ;
-	border-bottom : 1px dotted #666 ;
+	border-bottom : 1px dotted #666 ; 
 }
 
 .onepress-menu ul li {
@@ -442,19 +365,20 @@ body, a {
 
 
 /* ------- CUSTOMIZABLE SITE MENU ---------- */
-#primary {
+#primary { 
     padding-bottom: 0px;
     padding-top: 0px;
 }
 
 #primary #site_content_menu {
     border : 0px solid yellow ;
-    margin-top : 50px ;
+    text-align: center ;
+    /*margin-top : 150px ; */
 }
 
 #primary #site_content_menu ul {
     list-style-type : none ;
-    padding-left : 0px ;
+    padding-left : 0px ; 
     display : inline ;
 }
 
@@ -464,23 +388,35 @@ body, a {
 }
 
 #primary #site_content_menu ul li a {
-    display : inline-block ;
+    display : inline-block ; 
 }
 /* ------- END CUSTOMIZABLE SITE MENU ---------- */
 
-/* ------ STYLE THE HERO WIDGET -------- */
+/* ------ STYLE THE HERO IMAGE -------- */
+
+#hero_widget {
+    width : 100% ; 
+    margin : 50px 0 0 0 ; 
+    background-size: cover ; 
+    background-repeat: no-repeat ;
+}
 
 #hero_text {
-    height : 50px ;
+    height : 100px ;
+    color: black ;
 }
 
 #hero_text h3 {
     padding : 40px ;
-    width : 100% ;
-    text-align : center ;
+    padding-bottom: 0 ;
+    font-size: 2.5rem ;
+    width: 100% ;
+    text-align: center ;
+    font-weight: lighter ;
 }
 
 /* ------ END STYLE THE HERO IMAGE -------- */
+
 /*------- DROPDOWN MENUS ------------------ */
 
 li.menu-item-has-children {
@@ -500,5 +436,64 @@ li.menu-item-has-children ul.submenu {
 }
 
 li.menu-item-has-children:hover {
-    display : block ;
+    display : block ; 
 }
+
+#site_content_menu {
+  border: 0;
+  margin-bottom: 30px;
+}
+
+#site_content_menu li {
+  text-transform: uppercase;
+  margin-right: 2em;
+  letter-spacing: 1px;
+}
+
+
+/* ------ FRONT PAGE TABLE OF EVENTS ------ */
+
+#cds-events-table td {
+  text-align: left;
+}
+
+#cds-events-table bg-primary {
+  padding-left: .3em ;
+  padding-right: .3em ;
+}
+
+/* ------ PROJECT LIST USING CATLIST PLUGIN ------ */
+
+ul.project-list {
+  margin-left: 0;
+  padding-left: 0;
+  width: 100%;
+  float: left;
+  clear: both;
+}
+
+ul.project-list li {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+  float: left;
+  width: 33%;
+}
+
+ul.project-list li a {
+  text-align: left;
+  display: block;
+}
+
+/* 
+ul.project-list li a img {
+ 
+  float: left;
+} */
+
+ul.project-list li a:first-of-type {
+  height: 3rem;
+  font-style: italic;
+  padding-right: 1rem;
+}
+

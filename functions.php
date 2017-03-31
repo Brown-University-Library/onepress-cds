@@ -40,7 +40,7 @@ class Hero_Widget extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
-		echo $args['before_widget'];
+// 		echo $args['before_widget'];
 
 		if ( ! empty( $instance['image'] ) ) {
 			echo "<div id='hero_widget' style='background-image : url(\"" . $instance['image'] . "\") ; '>
@@ -79,7 +79,6 @@ class Hero_Widget extends WP_Widget {
 		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		
 		</p>
-		<p>
 		<label for="<?php echo esc_attr( $this->get_field_id( 'image' ) ); ?>">
 		    <?php esc_attr_e( 'Image URL:', 'text_domain' ); ?>
 		</label> 
@@ -117,48 +116,8 @@ function register_hero_widget() {
     register_widget( 'Hero_Widget' );
 }
 add_action( 'widgets_init', 'register_hero_widget' );
+
 /* End hero widget */
-
-/* Allow HTML in widget titles */
-function html_widget_title( $title ) {
-//HTML tag opening/closing brackets
-$title = str_replace( '[', '<', $title );
-$title = str_replace( '[/', '</', $title );
-// bold -- changed from 's' to 'strong' because of strikethrough code
-$title = str_replace( 'strong]', 'strong>', $title );
-$title = str_replace( 'b]', 'b>', $title );
-// italic
-$title = str_replace( 'em]', 'em>', $title );
-$title = str_replace( 'i]', 'i>', $title );
-// underline
-// $title = str_replace( 'u]', 'u>', $title ); // could use this, but it is deprecated so use the following instead
-$title = str_replace( '<u]', '<span style="text-decoration:underline;">', $title );
-$title = str_replace( '</u]', '</span>', $title );
-// superscript
-$title = str_replace( 'sup]', 'sup>', $title );
-// subscript
-$title = str_replace( 'sub]', 'sub>', $title );
-// del
-$title = str_replace( 'del]', 'del>', $title ); // del is like strike except it is not deprecated, but strike has wider browser support -- you might want to replace the following 'strike' section to replace all with 'del' instead
-// strikethrough or <s></s>
-$title = str_replace( 'strike]', 'strike>', $title );
-$title = str_replace( 's]', 'strike>', $title ); // <s></s> was deprecated earlier than so we will convert it
-$title = str_replace( 'strikethrough]', 'strike>', $title ); // just in case you forget that it is 'strike', not 'strikethrough'
-// wtitle1 (to be styled in style.css using .wtitle1 class)
-$title = str_replace( '<wtitle1]', '<span class="wtitle1">', $title );
-$title = str_replace( '</wtitle1]', '</span>', $title );
-// wtitle2 (to be styled in style.css using .wtitle2 class)
-$title = str_replace( '<wtitle2]', '<span class="wtitle2">', $title );
-$title = str_replace( '</wtitle2]', '</span>', $title );
-
-return $title;
-}
-add_filter( 'widget_title', 'html_widget_title' );
-
-/* End HTML in widget titles */
-
-
-
 
 /**
  * Register our sidebars and widgetized areas.
