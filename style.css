@@ -496,8 +496,3 @@ ul.project-list li a:first-of-type {
   font-style: italic;
   padding-right: 1rem;
 }
-
-/* crystal testing */
-.crystal {
-  border: 5px solid red !important;
-}
