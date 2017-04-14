@@ -13,7 +13,7 @@ body, a {
 .page-header {
     padding: 7px 0px;
     background: #4E3629 ;
-    border : 0px solid ;
+    border : 10px solid blue;
     margin : 0px ; 
 }
 
@@ -497,3 +497,7 @@ ul.project-list li a:first-of-type {
   padding-right: 1rem;
 }
 
+/* crystal testing */
+.crystal {
+  border: 5px solid red !important;
+}
