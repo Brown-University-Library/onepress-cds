@@ -119,10 +119,144 @@ add_action( 'widgets_init', 'register_hero_widget' );
 
 /* End hero widget */
 
+
+/* Begin CDS calendar shortcode */
+
+function get_cds_calendar($atts) {
+  
+  // Get shortcode attributes (NONE YET)
+  
+  $a = shortcode_atts( array(
+          'scope' => 'next_7_days'
+      ), $atts );
+
+  // Options for scope: current_week, current_semester, current_year, next_7_days, semester_to_end, year_to_end
+    
+  switch ($a['scope']) {
+    case 'next_7_days':
+        $startDate = new DateTime();
+        $endDate = new DateTime();
+        $endDate->modify("+7 day");
+        break;
+    // TO DO: ADD OTHER SCOPES
+  }
+  
+  // URI of the events feed
+
+  // $url = "http://brownlibrary.lwcal.com/live/rss/events/max/5" ;
+  $url = "https://brownlibrary.lwcal.com/live/rss/events/tag/CDS/" 
+       . "start_date/" . $startDate->format("mdY") 
+       . "/end_date/" . $endDate->format("mdY");
+  
+  $ch = curl_init();
+  
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_TIMEOUT, 2); 
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  
+  $feed = curl_exec($ch);
+  
+  curl_close($ch);
+
+  if ($feed != '') {
+
+    // Data structure for the days of the week
+
+    $weekDB = [[],[],[],[],[],[],[]];
+
+    // Find the dateTimes for the beginning and end of week
+
+    $now = new DateTime();
+    $brownTimeZone = new DateTimeZone('America/New_York');
+
+    $lastSunday = (new DateTime)->setTimezone($brownTimeZone)
+                                ->setISODate($now->format('Y'), $now->format('W'), 0)
+                                ->setTime(0, 0);
+
+    $nextSunday = (new DateTime)->setTimezone($brownTimeZone)
+                                ->setISODate($now->format('Y'), $now->format('W') + 1, 0)
+                                ->setTime(0, 0);
+
+    // Load the text of the feed into a variable and load into data structure ($weekDB)
+
+    $xml = simplexml_load_string($feed);
+    $html = '';
+
+    foreach ($xml->channel->item as $item) {
+
+      // echo "XXXXXXXXXXXXXXX\n" . print_r($item);
+      // echo "XXXXXXXXXXXXXXX\n" . print_r($item->children('livewhale', true)->categories);
+      
+      
+      $title = $item->title ;
+      $link = $item->link ;
+
+      $pubDate = $item->pubDate ;
+
+      // Convert the pubDate string to a timestamp
+
+      $event_unix_timestamp_utc = strtotime($pubDate) ;
+
+      // Set the timezone of the timestamp to UTC, to be sure
+
+      $original_timestamp = date( 'Y-m-d H:i:s', $event_unix_timestamp_utc ) ;
+      $utc = new DateTimeZone('UTC') ;
+      $datetime = new DateTime($original_timestamp, $utc) ;
+
+      $weekDB[$datetime->format('w')][] = [
+        'title' => (string) $item->title,
+        'link' =>  (string) $item->link,
+        'category' => (string) $item->children('livewhale', true)->categories,
+        // ^^^^ this is how you reference children in a different namespace
+        'datetime' => $datetime
+      ];
+    }
+
+    // Now generate HTML from data structure
+
+    $dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 
+                 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+    for ($weekDay = 0; $weekDay < 7; $weekDay++) {
+
+      $dayRow = '';
+      $day = $weekDB[$weekDay];
+      $dayCell = "<td>" . $dayNames[$weekDay] . "</td>\n";
+      $eventsCell = '';
+
+      if ($day) {
+
+        foreach($day as $event) {
+          $eventsCell .= '<li style="list-style-type: none">'
+            . "<strong style='text-transform: uppercase; font-size: 70%; color: white; background-color: #900;'>&nbsp;{$event['category']}&nbsp;</strong> <em>" 
+            . "<a href='{$event['link']}'>{$event['title']}</a>"
+            . "</em> "
+            . $event['datetime']->format('g:i a')
+            . "</li>\n";
+        }
+
+        $eventsCell = "<td>\n" . $eventsCell . "</td>\n";
+        $html .= "<tr>\n" . $dayCell . $eventsCell . "</tr>\n";
+      }
+    }
+
+    $html = '<table class="table" id="cds-events-table">
+  <tbody>' . $html . '</tbody></table>';
+    
+    return $html;
+    
+  } else {
+    return '';
+  }
+}
+
+/* End CDS calendar shortcode */
+
 /**
- * Register our sidebars and widgetized areas.
+ * Register our sidebars, widgetized areas, and shortcodes.
  *
  */
+
 function arphabet_widgets_init() {
 
 	register_sidebar( array(
@@ -135,7 +269,7 @@ function arphabet_widgets_init() {
 }
 add_action( 'widgets_init', 'arphabet_widgets_init' );
 
-
+add_shortcode('cds_cal', 'get_cds_calendar');
 
 ?>
 
