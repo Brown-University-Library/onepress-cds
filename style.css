@@ -497,3 +497,17 @@ ul.project-list li a:first-of-type {
   padding-right: 1rem;
 }
 
+/* ------ END PROJECT LIST USING CATLIST PLUGIN ------ */
+
+
+/* ------ EXPERTISE PAGE ------ */
+.expertise-info h3:nth-child(n+2) {
+	margin-top: 2.5rem;
+}
+.expertise-info h4:nth-child(n+2) {
+	margin: 1.25rem 0 .5rem 0;
+}
+.expertise-contact span {
+	font-weight: bold;
+}
+/* ------ END EXPERTISE PAGE ------ */
