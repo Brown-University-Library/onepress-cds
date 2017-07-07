@@ -496,4 +496,24 @@ ul.project-list li a:first-of-type {
   font-style: italic;
   padding-right: 1rem;
 }
+/* ------ END PROJECT LIST USING CATLIST PLUGIN ------ */
 
+
+/* ------ PEOPLE ------ */
+.people-page img {
+	margin-bottom: .5rem;
+}
+.people__heading {
+	margin-top: 5rem;
+}
+.people__title h3 {
+	float: right;
+	text-align: left;
+	width: 214px;
+}
+.profile-image--medium {
+	height: 300px;
+	width: 214px;
+	margin-top: 7px;
+}
+/* ------ END PEOPLE ------ */
