@@ -450,6 +450,51 @@ li.menu-item-has-children:hover {
   letter-spacing: 1px;
 }
 
+/*------- END DROPDOWN MENUS ------------------ */
+
+/* ------ FRONT PAGE LAYOUT ------*/
+
+.su-column {
+	margin-bottom: 4rem !important; /* I need this to override a shortcodes ultimate style on max-width: 768px */
+}
+
+div.su-row.atf h2 {
+	font-weight: 500;
+	margin-bottom: .5rem;
+}
+
+div.su-row.atf p {
+	font-size: 1rem;
+}
+
+div.su-column.su-column-size-1-2.home__intro {
+
+}
+
+div.su-column.su-column-size-1-2.home__calendar {
+	
+}
+
+div.su-column.su-column-size-1-2.home__projects {
+	
+}
+
+@media screen and (min-width: 769px) {
+	.su-row {
+		margin-bottom: 4rem;
+	}
+	.su-column {
+		margin-bottom: 0;
+	}
+	div.su-row.atf h2 {
+		line-height: 2.1rem;
+	}
+	div.su-row.atf p {
+		vertical-align: baseline;
+	}	
+}
+
+/* ------ END FRONT PAGE LAYOUT ------*/
 
 /* ------ FRONT PAGE TABLE OF EVENTS ------ */
 
@@ -461,6 +506,8 @@ li.menu-item-has-children:hover {
   padding-left: .3em ;
   padding-right: .3em ;
 }
+
+/* ------ END FRONT PAGE TABLE OF EVENTS ------ */
 
 /* ------ PROJECT LIST USING CATLIST PLUGIN ------ */
 
@@ -501,3 +548,4 @@ ul.project-list li a:first-of-type {
 }
 
 */
+/* ------ END PROJECT LIST USING CATLIST PLUGIN ------ */
