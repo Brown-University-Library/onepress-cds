@@ -9,23 +9,14 @@ Version: .2 beta
 body {
     color : #000 ; 
 }
-/*
-Testing Link Contrast
-414042 10.31:1
-#4B4848 9.05:1
-5F5B60 6.66:1
-#686E7F 5.09:1
-#545E95 6.15:1 font-weight: 600
-2B273F 14.34:1
-0D265C 14.49:1
-*/
+
 a {
-	color : #2B273F;
+	color : #5F5653;
 	font-weight: bold;
 }
 
 a:hover {
-	border-bottom: 4px solid #2B273F;
+	border-bottom: 4px solid #4D4269;
 	text-decoration: none;
 }
 
