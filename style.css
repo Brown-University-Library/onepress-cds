@@ -516,4 +516,7 @@ ul.project-list li a:first-of-type {
 	width: 214px;
 	margin-top: 7px;
 }
+.people__name {
+	font-weight: bold;
+}
 /* ------ END PEOPLE ------ */
