@@ -501,3 +501,39 @@ ul.project-list li a:first-of-type {
 }
 
 */
+
+/* ------ PROJECT PAGE ------ */
+.project-page__intro {
+	font-size: 1.2rem;
+	margin-bottom: 3rem;
+	padding: 0 13.5rem;
+	line-height: 1.8rem;
+}
+
+.project-page__featured-projects {
+	margin-bottom: 4rem;
+}
+
+.project-page__featured-projects a img {
+	margin-bottom: .5rem;
+	min-width: 300px;
+}
+
+.featured-project {
+	font-size: 1rem;
+	line-height: 1.5rem;
+}
+
+.project-page__all-projects h2 {
+	margin-bottom: .3rem;
+}
+
+@media screen and (min-width: 770px) and (max-width: 1200px) {
+	.project-page__intro {
+		font-size: 1.1rem;
+		margin-top: 2rem;
+		padding: 0 6rem;
+	}
+
+}
+/* ------ PROJECT PAGE ------ */
