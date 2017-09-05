@@ -501,6 +501,12 @@ ul.project-list li a:first-of-type {
 
 
 /* ------ EXPERTISE PAGE ------ */
+.expertise-list-page h3 {
+	font-size: 1.2rem;
+	font-weight: normal;
+	line-height: 1.8rem;
+}
+
 .expertise-info h3:nth-child(n+2) {
 	margin-top: 2.5rem;
 }
