@@ -505,6 +505,18 @@ div.su-column.su-column-size-1-2.home__projects {
 	}
 	div.su-row.atf p {
 		vertical-align: baseline;
+	}
+	.project-icon-list div {
+		display: flex;
+		flex-direction: column;
+	}
+	.project-icon-list div a img {
+		margin-bottom: .5rem;
+		width: 100%;
+	}
+	.project-icon-list div .lcp_post {
+		margin-left: 0;
+		position: relative;
 	}	
 }
 
