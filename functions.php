@@ -5,7 +5,6 @@ add_action( 'wp_enqueue_scripts', 'onepress_child_enqueue_styles', 15 );
 function onepress_child_enqueue_styles() {
     wp_enqueue_style( 'onepress-child-style', get_stylesheet_directory_uri() . '/style.css' );
 }
-
 // hide parent theme templates
 function tfc_remove_page_templates( $templates ) {
     unset( $templates['template-left-sidebar.php'] );
@@ -14,12 +13,10 @@ function tfc_remove_page_templates( $templates ) {
     return $templates;
 }
 add_filter( 'theme_page_templates', 'tfc_remove_page_templates' );
-
 /**
  * Creates Hero widget.
  */
 class Hero_Widget extends WP_Widget {
-
 	/**
 	 * Register widget with WordPress.
 	 */
@@ -30,7 +27,6 @@ class Hero_Widget extends WP_Widget {
 			array( 'description' => esc_html__( 'Add a hero image', 'text_domain' ), ) // Args
 		);
 	}
-
 	/**
 	 * Front-end display of widget.
 	 *
@@ -41,7 +37,6 @@ class Hero_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 // 		echo $args['before_widget'];
-
 		if ( ! empty( $instance['image'] ) ) {
 			echo "<div id='hero_widget' style='background-image : url(\"" . $instance['image'] . "\") ; '>
 			
@@ -58,7 +53,6 @@ class Hero_Widget extends WP_Widget {
 // 		echo esc_html__( 'Hello, World!', 'text_domain' );
 		echo $args['after_widget'];
 	}
-
 	/**
 	 * Back-end widget form.
 	 *
@@ -89,7 +83,6 @@ class Hero_Widget extends WP_Widget {
 		
 		<?php 
 	}
-
 	/**
 	 * Sanitize widget form values as they are saved.
 	 *
@@ -104,62 +97,47 @@ class Hero_Widget extends WP_Widget {
 		$instance = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		$instance['image'] = ( ! empty( $new_instance['image'] ) ) ?  : '';
-
-
 		return $instance;
 	}
-
 } // class Foo_Widget
-
 // register Foo_Widget widget
 function register_hero_widget() {
     register_widget( 'Hero_Widget' );
 }
 add_action( 'widgets_init', 'register_hero_widget' );
-
 /* End hero widget */
+
+
 
 
 /* Begin CDS calendar shortcode */
 
-function get_cds_calendar($atts) {
-  
-  // Get shortcode attributes (NONE YET)
-  
-  $a = shortcode_atts( array(
-          'scope' => 'next_7_days'
-      ), $atts );
 
-  // Options for scope: current_week, current_semester, current_year, next_7_days, semester_to_end, year_to_end
-    
-  switch ($a['scope']) {
-    case 'next_7_days':
-        $startDate = new DateTime();
-        $endDate = new DateTime();
-        $endDate->modify("+7 day");
-        break;
-    // TO DO: ADD OTHER SCOPES
-  }
+function get_cds_calendar_upcoming_year($xml) {
   
-  // URI of the events feed
+    $html = '';
+  
+    foreach ($xml->channel->item as $item) {
+            
+        $pubDate = $item->pubDate ;
+        $event_unix_timestamp_utc = strtotime($pubDate); // Convert the pubDate string to a timestamp
 
-  // $url = "http://brownlibrary.lwcal.com/live/rss/events/max/5" ;
-  $url = "https://brownlibrary.lwcal.com/live/rss/events/tag/CDS/" 
-       . "start_date/" . $startDate->format("mdY") 
-       . "/end_date/" . $endDate->format("mdY");
-  
-  $ch = curl_init();
-  
-  curl_setopt($ch, CURLOPT_URL, $url);
-  curl_setopt($ch, CURLOPT_TIMEOUT, 2); 
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  
-  $feed = curl_exec($ch);
-  
-  curl_close($ch);
+        // Set the timezone of the timestamp to UTC, to be sure
 
-  if ($feed != '') {
+        $original_timestamp = date( 'Y-m-d H:i:s', $event_unix_timestamp_utc ) ;
+        // $utc = new DateTimeZone('UTC') ;  
+        $brownTimeZone = new DateTimeZone('America/New_York');
+      
+        $datetime = new DateTime($original_timestamp, $brownTimeZone) ;
+      
+        $html .= '<li>' . $datetime->format('M jS g:i a') . ': <a href="' . $item->link .'">' . $item->title . '</a></li>';
+    }
+  
+    return '<ul>' . $html . '</ul>';
+}
 
+function get_cds_calendar_upcoming_week($xml) {
+  
     // Data structure for the days of the week
 
     $weekDB = [[],[],[],[],[],[],[]];
@@ -179,7 +157,6 @@ function get_cds_calendar($atts) {
 
     // Load the text of the feed into a variable and load into data structure ($weekDB)
 
-    $xml = simplexml_load_string($feed);
     $html = '';
 
     foreach ($xml->channel->item as $item) {
@@ -200,8 +177,9 @@ function get_cds_calendar($atts) {
       // Set the timezone of the timestamp to UTC, to be sure
 
       $original_timestamp = date( 'Y-m-d H:i:s', $event_unix_timestamp_utc ) ;
-      $utc = new DateTimeZone('UTC') ;
-      $datetime = new DateTime($original_timestamp, $utc) ;
+      // $utc = new DateTimeZone('America/New_York'); 
+      // new DateTimeZone('UTC') ;
+      $datetime = new DateTime($original_timestamp, $brownTimeZone);
 
       $weekDB[$datetime->format('w')][] = [
         'title' => (string) $item->title,
@@ -240,8 +218,78 @@ function get_cds_calendar($atts) {
       }
     }
 
-    $html = '<table class="table" id="cds-events-table">
-  <tbody>' . $html . '</tbody></table>';
+    $html = '<table class="table" id="cds-events-table"><tbody>' . $html . '</tbody></table>';
+  
+    return $html;
+}
+
+// Main function for getting the calendar listing
+
+function get_cds_calendar($atts) {
+  
+  // Get shortcode attributes
+  
+  $a = shortcode_atts( array(
+          'scope' => 'next_7_days',
+          'category' => ''
+      ), $atts );
+
+  // Right place, right time
+  
+  date_default_timezone_set('America/New_York');
+  
+  // Options for scope: current_week, current_semester, current_year, next_7_days, semester_to_end, year_to_end
+    
+  switch ($a['scope']) {
+    case 'next_7_days':
+        $startDate = new DateTime();
+        $endDate = new DateTime();
+        $endDate->modify("+7 day");
+        break;
+    case 'this_year':
+        $startDate = new DateTime();
+        $endDate = new DateTime();
+        $endDate->modify("+1 year");
+        break;
+    // TO DO: ADD OTHER SCOPES
+  }
+  
+  // URI of the events feed
+
+  $url = "https://brownlibrary.lwcal.com/live/rss/events/tag/CDS/" 
+       . "start_date/" . $startDate->format("mdY") 
+       . "/end_date/" . $endDate->format("mdY");
+  
+  if ($a['category'] != '') {
+    $url .= '/category/' . str_replace('+', '%20', urlencode($a['category']));
+  }
+  
+  $ch = curl_init();
+  
+  print_r('<!-- FEED URL IS ' . $url . ' -->');
+  
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_TIMEOUT, 2); 
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  
+  $feed = curl_exec($ch);
+  
+  curl_close($ch);
+  
+  //print "***************";
+  //print_r($feed);
+  //print "***************";
+
+  if ($feed != '') {
+
+    $xml = simplexml_load_string($feed);
+
+    switch ($a['scope']) {
+      case 'next_7_days':
+        $html = get_cds_calendar_upcoming_week($xml); break;
+      case 'this_year':
+        $html = get_cds_calendar_upcoming_year($xml); break;
+    }
     
     return $html;
     
@@ -252,26 +300,22 @@ function get_cds_calendar($atts) {
 
 /* End CDS calendar shortcode */
 
+
 /**
- * Register our sidebars, widgetized areas, and shortcodes.
+ * Register our sidebars and widgetized areas.
  *
  */
-
 function arphabet_widgets_init() {
-
 	register_sidebar( array(
 		'name'          => 'Hero Image',
 		'id'            => 'hero_image',
 		'before_widget' => '<div id="hero_image">',
 		'after_widget'  => '</div>',
 	) );
-
 }
 add_action( 'widgets_init', 'arphabet_widgets_init' );
 
 add_shortcode('cds_cal', 'get_cds_calendar');
 
+
 ?>
-
-
-

@@ -8,7 +8,7 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Full Content Template
  *
-Template Name:  CDS Front page
+Template Name:  DO NOT USE CDS Front page
  *
  * @file           page-2.php
  * @package        exhibits-general
@@ -57,6 +57,7 @@ END COMMENT OUT */ ?>
 			<?php get_template_part( 'loop-header', get_post_type() ); ?>
 
 			<?php responsive_entry_before(); ?>
+
 			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<?php responsive_entry_top(); ?>
 

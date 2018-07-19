@@ -6,22 +6,8 @@ Template: onepress
 Version: .2 beta
 */
 
-body {
+body, a {
     color : #000 ; 
-}
-
-a {
-	color : #5F5653;
-	font-weight: bold;
-}
-
-a:hover {
-	border-bottom: 4px solid #4D4269;
-	text-decoration: none;
-}
-
-p a {
-	text-decoration: underline;
 }
 
 .page-header {
@@ -29,6 +15,7 @@ p a {
     background: #4E3629 ;
     border : 0px solid ;
     margin : 0px ; 
+    height : 58px ;
 }
 
 .site-header { 
@@ -486,7 +473,6 @@ li.menu-item-has-children:hover {
 }
 
 /* CAN BE ERASED ....
-
 ul.project-list {
   margin-left: 0;
   padding-left: 0;
@@ -494,7 +480,6 @@ ul.project-list {
   float: left;
   clear: both;
 }
-
 ul.project-list li {
   list-style-type: none;
   margin-left: 0;
@@ -502,16 +487,20 @@ ul.project-list li {
   float: left;
   width: 33%;
 }
-
 ul.project-list li a {
   text-align: left;
   display: block;
 }
-
 ul.project-list li a:first-of-type {
   height: 3rem;
   font-style: italic;
   padding-right: 1rem;
 }
-
 */
+
+#site_title {
+    text-align : center ; 
+    font-size : 3em ;
+    font-weight : light ; 
+    margin-top : 30px ; 
+}

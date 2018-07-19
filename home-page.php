@@ -8,7 +8,7 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Full Content Template
  *
-Template Name:  Home Page
+Template Name:  DO NOT USE Home Page
  *
  * @file           home-page.php
  * @package        exhibits-general

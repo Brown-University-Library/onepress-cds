@@ -17,10 +17,7 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Display breadcrumb
  */
-// PR NOTE - as of Aug 2017, this is throwing an error
-// (get_responsive_breadcrumb_lists does not exist)
-// Commented out for testing
-// get_responsive_breadcrumb_lists();
+get_responsive_breadcrumb_lists();
 
 /**
  * Display archive information
