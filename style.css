@@ -386,6 +386,10 @@ body, a {
 
 #primary #site_content_menu ul li {
     display : inline ;
+    font-family: 'IBM Plex Sans Condensed', Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: capitalize;
 }
 
 #primary #site_content_menu ul li a {
@@ -410,6 +414,7 @@ body, a {
 #hero_text h3 {
     padding : 40px ;
     padding-bottom: 0 ;
+    font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
     font-size: 3rem ;
     font-weight: 600;
     width: 100% ;
@@ -465,38 +470,17 @@ li.menu-item-has-children:hover {
 
 /* ------ PROJECT LIST USING CATLIST PLUGIN ------ */
 
+.project-icon-list img {
+	width: 75px;
+	height: 75px;
+	float: left;
+}
 
 .project-icon-list div p {
-    margin-left: 80px;
-    position: absolute;
-    top: 0;
+	margin-left: 80px;
 }
 
-/* CAN BE ERASED ....
-ul.project-list {
-  margin-left: 0;
-  padding-left: 0;
-  width: 100%;
-  float: left;
-  clear: both;
-}
-ul.project-list li {
-  list-style-type: none;
-  margin-left: 0;
-  padding-left: 0;
-  float: left;
-  width: 33%;
-}
-ul.project-list li a {
-  text-align: left;
-  display: block;
-}
-ul.project-list li a:first-of-type {
-  height: 3rem;
-  font-style: italic;
-  padding-right: 1rem;
-}
-*/
+/* ------ SITE TITLE ------ */
 
 #site_title {
     text-align : center ; 
@@ -504,3 +488,18 @@ ul.project-list li a:first-of-type {
     font-weight : light ; 
     margin-top : 30px ; 
 }
+
+/* ------ BOOTSTRAP OVERRIDES ------ */
+
+#page #content-inside .card {
+	border: 0;
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
+
+/* homepage intro paragraph */
+.su-row .atf > p {
+	color: pink;
+}
+/* end homepage intro paragraph */
+
