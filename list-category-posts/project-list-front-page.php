@@ -44,7 +44,9 @@ $lcp_display_output .= $this->get_category_link('strong');
 $lcp_display_output .= $this->get_conditional_title();
 
 //Add 'starting' tag. Here, I'm using an unordered list (ul) as an example:
-$lcp_display_output .= '<div class="row project-icon-list">';
+// $lcp_display_output .= '<div class="row project-icon-list">';
+$lcp_display_output .= '<div class="project-icon-list">';
+// $lcp_display_output .= '<div class="card">';
 
 /* Posts Loop
  *
@@ -62,7 +64,8 @@ while ( have_posts() ):
   the_post();
 
   //Start a List Item for each post:
-  $lcp_display_output .= "<div class='col-md-4'>";
+  // $lcp_display_output .= "<div class='col-md-4'>";
+  $lcp_display_output .= "<div>";
 
   //Post Thumbnail
   $lcp_display_output .= $this->get_thumbnail($post);

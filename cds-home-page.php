@@ -1,11 +1,7 @@
 <?php
 /**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
+ * Template Name: CDS Home Page
+ * The template for displaying expertise pages.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -43,9 +39,7 @@ get_header(); ?>
         <?php dynamic_sidebar( 'hero_image' ); ?>
         
 <!--
-        <div id="site_title">
-            <?php echo get_bloginfo( 'name' ) ; ?>
-        </div>
+        <?php echo get_bloginfo( 'name' ) ; ?>
 -->
 
 		<div id="content-inside" class="container no-sidebar">
@@ -77,5 +71,9 @@ get_header(); ?>
 			</div><!-- #primary -->
 		</div><!--#content-inside -->
 	</div><!-- #content -->
+
+	<div class="lwcw" data-options="id=9&format=html" />
+	<script type="text/javascript" id="lw_lwcw" src="http://brownlibrary.lwcal.com/livewhale/theme/core/scripts/lwcw.js"></script></div>
+
 
 <?php get_footer(); ?>
