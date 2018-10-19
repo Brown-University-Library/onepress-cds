@@ -90,6 +90,8 @@ if (has_post_thumbnail( $post->ID ) ) {
 	endif;
 	?>
 
+	<div class="my-test">hi</div>
+
     <?php if ( is_active_sidebar( 'footer-widget' ) ) : ?>
         <div id="footer-widget" style="clear : both ; width : 100% ; ">
             <?php dynamic_sidebar( 'footer-widget' ); ?>

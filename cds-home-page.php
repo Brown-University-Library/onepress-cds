@@ -52,7 +52,7 @@ get_header(); ?>
                             wp_nav_menu(array('theme_location' => 'primary', 'container' => '', 'items_wrap' => '%3$s'));  
                         ?>
                     </ul>
-                </div>
+                </div><hr />
 				<main id="main" class="site-main" role="main">
 					<?php while ( have_posts() ) : the_post(); ?>
 
