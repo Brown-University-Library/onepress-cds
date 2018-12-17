@@ -20,8 +20,7 @@ get_header(); ?>
 				</div>
 				<div style="width : 50% ; float : right ; margin-top : 6px ;  " >
 				  <div style="float : right ; ">
-				        <label for="q" value="search box" />
-                      <input style="border-radius : 4px 0px 0px 4px ; width : 270px ; height : 25px ; font-size : .8em ; margin : 0px ; " id="q" name="q" placeholder="Enter keywords to search library resources" type="text" value=""  />
+				        <input aria-label="search" style="border-radius : 4px 0px 0px 4px ; width : 270px ; height : 25px ; font-size : .8em ; margin : 0px ; " id="q" name="q" placeholder="Enter keywords to search library resources" type="text" value=""  />
                     <button type="submit" class="btn" style="width : 50px ; height : 25px ; background-color : #FFC72C ; font-size : .7em ; color : #4E3629 ; padding : 0px ; border-radius : 0px 4px 4px 0px ; margin : 0px 0px 0px -6px ; " id="search">
                         <span class="submit-search-text">Search</span>
                     </button>
@@ -52,7 +51,7 @@ get_header(); ?>
                             wp_nav_menu(array('theme_location' => 'primary', 'container' => '', 'items_wrap' => '%3$s'));  
                         ?>
                     </ul>
-                </div>
+                </div><hr />
 				<main id="main" class="site-main" role="main">
 					<?php while ( have_posts() ) : the_post(); ?>
 
@@ -72,7 +71,7 @@ get_header(); ?>
 		</div><!--#content-inside -->
 	</div><!-- #content -->
 
-	<div class="lwcw" data-options="id=9&format=html" />
+	<div class="lwcw" data-options="id=9&format=html">
 	<script type="text/javascript" id="lw_lwcw" src="http://brownlibrary.lwcal.com/livewhale/theme/core/scripts/lwcw.js"></script></div>
 
 
