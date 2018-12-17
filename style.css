@@ -7,7 +7,7 @@ Version: .2 beta
 */
 
 body, a {
-    color : #000 ; 
+    color : #000 ;
 }
 
 .page-header {
@@ -456,34 +456,138 @@ li.menu-item-has-children:hover {
   letter-spacing: 1px;
 }
 
+/* ------ GLOBAL ------- */
+body {
+	font-family: 'Freight Sans Pro', Helvetica, Arial, sans-serif;
+    font-size: 1.125rem ;
+    font-weight: 300;
+    line-height: 2rem;
+}
+h1 {
+	font-family: 'IBM Plex Sans Condensed', Helvetica, Arial, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    padding-top: 1.5rem;
+}
+h2 {
+	font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 2.25rem;
+    padding-top: 1rem;
+}
+h3 {
+	font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+p {
+	font-family: 'Freight Sans Pro', Helvetica, Arial, sans-serif;
+    font-size: 1.125rem ;
+    font-weight: 300;
+    line-height: 2rem;	
+}
+li {
+	font-family: 'Freight Sans Pro', Helvetica, Arial, sans-serif;
+    font-size: 1rem ;
+    font-weight: 300;
+    line-height: 1.5rem;	
+}
+.entry-content a:visited, .entry-content a:focus {
+	text-decoration: none;
+	color: #000;
+}
+.entry-content a.btn {
+	color: #fff;
+}
+.entry-content h2 a {
+	color: #000;
+}
+cite {
+	font-style: oblique;
+}
+
+/* ------ GLOBAL MOBILE - SMALL ------ */
+
+@media screen and (max-width: 575px) {
+	h1 {
+		font-size: 1.825rem;
+		padding-top: .5rem;
+	}
+	h2 {
+		font-size: 1.625rem;
+	}
+}
+
+
+/* ------ BOOTSTRAP OVERRIDES ------ */
+
+#page #content-inside .card {
+	border: 0;
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
+
+/* removes the empty footer from all pages except project and people posts, which have tags in the footer */
+/* 
+body.page-template-default footer {
+	display: block;
+}
+ */
+
+
 /* ------ FRONT PAGE ------ */
-.home #page #content-inside { /* overwrites bootstrap styles */
+/* overwrites bootstrap styles */
+.home #page #content-inside {
 	margin: 0;
 	width: 100%;
 }
-.home .entry-content { /* homepage grid */
+/* front page grid */
+.home .entry-content {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
-	grid-template-rows: repeat(8, auto);
+	grid-template-rows: repeat(9, auto);
 }
+/* front page section headings */
 .home .entry-content h2 {
+	/*border-bottom: 1px solid black;*/
 	font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
     font-size: 2.25rem ;
     font-weight: 600;
     line-height: 3rem;
-	margin: 5rem 0 0 0;
+	margin: 4rem 0 0 0;
 }
-.home .entry-content > p:nth-child(1) { /* intro paragraph */
+.expertise {
+	display: grid;
+	grid-area: 1 / 1 / 3 / 13;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: auto;
+}
+.entry-content .expertise a {
+	color: #555;
+	font-weight: 600;
+}
+.entry-content p.lcp_post a {
+	color: #000;
+}
+.entry-content .cds-events-table a {
+	color: #000;
+}
+/* intro paragraph */
+.expertise > p {
 	font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
     font-size: 1.25rem ;
     font-weight: 400;
 	grid-area: 1 / 4 / 2 / 10;
 	line-height: 2rem;
 }
-.home .entry-content .row:nth-of-type(1) { /* specialties row */
+/* specialties row */
+.home .entry-content .row:nth-of-type(1) {
+	padding: 0 5%;
 	grid-area: 2 / 1 / 3 / 13;
 }
-.home .entry-content .row:nth-of-type(1) .card { /* specialties item */
+/* specialties item */
+.home .entry-content .row:nth-of-type(1) .card {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -491,79 +595,179 @@ li.menu-item-has-children:hover {
 	padding: 0 3rem;
 	text-align: center;
 }
-.home .entry-content .row:nth-of-type(1) p.card-text a { /* specialties text */
-	font-family: 'Freight Sans Pro', Helvetica, Arial, sans-serif;
-    font-size: 1.125rem ;
-    font-weight: 500;
+/* specialties item text */
+.home .entry-content .row:nth-of-type(1) p.card-text { 
     line-height: 1.5rem;
 }
-.home .entry-content h2:nth-of-type(1) { /* Come Find Us heading */
-	grid-area: 3 / 2 / 4 / 13;
+.home .entry-content .row:nth-of-type(1) .card a {
+	color: #333;
+	font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-decoration: underline solid hsla(0, 0%, 0%, 0.3);
 }
-.home .entry-content .row:nth-of-type(2) { /* come find us text */
+.home .entry-content .row:nth-of-type(1) .card a:hover, .home .entry-content .row:nth-of-type(1) .card a:focus {
+	border-bottom: 3px solid hsla(0, 0%, 20%, 1);
+	text-decoration: none;
+	transition: .1s;
+}
+/* workshops row */
+.cds-events-table {
+	/*outline: 5px solid orange;*/
+	grid-area: 3 / 2 / 4 / 12;
+}
+.cds-events-table h2 {
+	margin-bottom: 2rem;
+	/*outline: 5px solid red;*/
+}
+.cds-events-table > table > tbody > tr > td > ul > li {
+	list-style-type: none;
+}
+.cds-event-badge {
+	text-transform: uppercase; 
+	font-size: 70%; 
+	color: white; 
+	background-color: #900;
+}
+/* Come Find Us section heading */
+.come-find-us {
+	display: grid;
+	grid-gap: 2rem;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(5, auto);
 	grid-area: 4 / 2 / 5 / 12;
 }
-.home .entry-content .row:nth-of-type(2) h3.card-title { /* come find us card title */
+.come-find-us h2 {
+	grid-area: 1 / 1 / 2 / 13;
+}
+.come-find-us a {
+	border-bottom: 4px solid hsla(0, 0%, 0%, 0.2);
+	white-space: nowrap;
+}
+.come-find-us a:hover, .come-find-us a:focus {
+	border-bottom: 4px solid hsla(0, 0%, 0%, 0.3);
+	color: hsla(0, 0%, 0%, 0.7);
+	text-decoration: none;
+}
+/* come find us content */
+.come-find-us div:nth-of-type(1) {
+	grid-area: 2 / 1 / 3 / 7;
+}
+.come-find-us div:nth-of-type(2) {
+	grid-area: 3 / 1 / 4 / 7;
+}
+.come-find-us div:nth-of-type(3) {
+	grid-area: 2 / 7 / 3 / 13;
+}
+.come-find-us div:nth-of-type(4) {
+	grid-area: 3 / 7 / 4 / 13;
+}
+/* come find us card title */
+.come-find-us div h3 {
 	font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
     font-size: 1.25rem ;
     font-weight: 500;
     line-height: 1.5rem;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.625rem;
 }
-.home .entry-content .row:nth-of-type(2) p.card-text { /* come find us card text */
+/* come find us card text */
+.come-find-us div p {
 	font-family: 'Freight Sans Pro', Helvetica, Arial, sans-serif;
     font-size: 1rem;
     font-weight: 300;
-    line-height: 1.825rem;
+    line-height: 1.5rem;
 }
-.home .entry-content h2:nth-of-type(2) { /* Projects heading */
-	grid-area: 5 / 2 / 6 / 13;
-	margin-bottom: 1rem;
+/* Projects section heading */
+.projects {	
+	display: grid;
+	grid-area: 5 / 2 / 6 / 12;
+	grid-gap: 1rem;
+	grid-template-columns: repeat(9, 1fr);
+	grid-template-rows: auto;
 }
-.home .entry-content div.project-icon-list div { /* project item content */
+.home .entry-content .projects h2 {
+	grid-area: 1 / 1 / 2 / 10;
+	margin: 2rem 0 0 0;
+}
+.home .entry-content .projects h2 a {
+	text-decoration: underline solid hsla(0, 0%, 0%, 0.1);
+}
+.home .entry-content .projects h2 a:hover, .home .entry-content .projects h2 a:focus {
+	border-bottom: 4px solid hsla(0, 0%, 20%, 1);
+	text-decoration: none;
+	transition: .1s;
+}
+.projects-note {
+	font-size: 1rem;
+	grid-area: 2 / 1 / 3 / 10;
+	line-height: 1.5rem;
+	margin-top: -1rem;
+}
+.projects-note a {
+	border-bottom: 4px solid hsla(0, 0%, 0%, 0.2);
+	white-space: nowrap;
+}
+.projects-note a:hover, .projects-note a:focus {
+	border-bottom: 4px solid hsla(0, 0%, 0%, 0.3);
+	color: hsla(0, 0%, 0%, 0.7);
+	text-decoration: none;
+}
+/* project item content */
+.projects div {
 	display: flex;
 	flex-direction: column;
 }
-.home .entry-content div.project-icon-list div>a { /* project item image */
+/* project item image */
+.projects div.project-icon-list div>a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin-bottom: .5rem;
 }
-.home .entry-content div.project-icon-list div p { /* project item title */
+/* project item title */
+.projects div.project-icon-list div p {
 	margin: 0 1rem;
 	text-align: center;
 }
-.home .entry-content div.project-icon-list div p a { /* project item title link */
+/* project item title link */
+.projects div.project-icon-list div p a {
 	font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
     font-size: 1.25rem ;
     font-weight: 500;
-    line-height: 1.5rem;
+    line-height: 1rem; /* needs to be fixed */
+    text-decoration: underline solid hsla(0, 0%, 0%, 0.2);
 }
-.home .entry-content h2:nth-of-type(2) + div.project-icon-list { /* project 1 : I don't know why these don't respond to nth selectors; */
-/*	background-color: green;*/
-	grid-area: 6 / 1 / 7 / 5;
+.projects div.project-icon-list div p a:hover, .projects div.project-icon-list div p a:focus {
+	border-bottom: 4px solid hsla(0, 0%, 20%, 1);
+	text-decoration: none;
+	transition: .1s;
 }
-.home .entry-content h2:nth-of-type(2) + div.project-icon-list + div.project-icon-list { /* project 2 */
-	/*background-color: blue;*/
-	grid-area: 6 / 5 / 7 / 9;
+/* project 1 */
+.projects div.project-icon-list { /* I don't know why these don't respond to nth selectors; */
+	grid-area:  3 / 1 / 4 / 4;
 }
-.home .entry-content h2:nth-of-type(2) + div.project-icon-list + div.project-icon-list + div.project-icon-list { /* project 3 */
-	/*background-color: red;*/
-	grid-area: 6 / 9 / 7 / 13;
+/* project 2 */
+.projects div.project-icon-list + div.project-icon-list {
+	grid-area: 3 / 4 / 4 / 7;
 }
+/* project 3 */
+.projects div.project-icon-list + div.project-icon-list + div.project-icon-list {
+	grid-area: 3 / 7 / 4 / 10;
+}
+
 /* ------ FRONT PAGE MOBILE - MEDIUM ------ */
 @media screen and (max-width: 1140px) {
 	.home .entry-content h2 {
 		margin: 4rem 0 0 0;
 	}
-	.home .entry-content > p:nth-child(1) { /* intro paragraph */
+	.expertise > p { /* intro paragraph */
 		grid-area: 1 / 2 / 2 / 12;
 	}
 	.home .entry-content .row:nth-of-type(1) .card { /* specialties item */
 		padding: 0 1rem;
 	}	
 }
+
 /* ------ FRONT PAGE MOBILE - SMALL ------ */
 @media screen and (max-width: 575px) {
 	#hero_widget {
@@ -577,7 +781,7 @@ li.menu-item-has-children:hover {
 	.home #content-inside {
 		padding: 0;
 	}
-	.home .entry-content > p:nth-child(1) { /* intro paragraph */
+	.expertise, .expertise > p {
 		font-size: 1.125rem;
 		grid-area: 1 / 1 / 2 / 13;
 		padding: 0 1.5rem;
@@ -585,15 +789,28 @@ li.menu-item-has-children:hover {
 	.home .entry-content .card-text + p {
 		margin-bottom: 0;
 	}
-	.home .entry-content h2:nth-of-type(2) + div.project-icon-list { /* project 1 : I don't know why these don't respond to nth selectors; */
-		grid-area: 6 / 1 / 7 / 13;
+	.come-find-us div:nth-of-type(1) {
+		grid-area: 2 / 1 / 3 / 13;
+	}
+	.come-find-us div:nth-of-type(2) {
+		grid-area: 3 / 1 / 4 / 13;
+	}
+	.come-find-us div:nth-of-type(3) {
+		grid-area: 4 / 1 / 5 / 13;
+	}
+	.come-find-us div:nth-of-type(4) {
+		grid-area: 5 / 1 / 6 / 13;
+	}
+	.projects div.project-icon-list {
+		grid-area: 2 / 1 / 3 / 10;
+		margin-top: 2rem;
 		margin-bottom: 1rem;
 	}
-	.home .entry-content h2:nth-of-type(2) + div.project-icon-list + div.project-icon-list { /* project 2 */
-		grid-area: 7 / 1 / 8 / 13;
+	.projects div.project-icon-list + div.project-icon-list {
+		grid-area: 3 / 1 / 4 / 10;
 	}
-	.home .entry-content h2:nth-of-type(2) + div.project-icon-list + div.project-icon-list + div.project-icon-list { /* project 3 */
-		grid-area: 8 / 1 / 9 / 13;
+	.projects div.project-icon-list + div.project-icon-list + div.project-icon-list {
+		grid-area: 4 / 1 / 5 / 10;
 	}	
 }
 
@@ -629,10 +846,724 @@ li.menu-item-has-children:hover {
     margin-top : 30px ; 
 }
 
-/* ------ BOOTSTRAP OVERRIDES ------ */
 
-#page #content-inside .card {
-	border: 0;
-	margin-bottom: 1em;
-	margin-top: 1em;
+/* ------ ACTIVITIES PAGE ------ */
+
+.activities {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: auto;
 }
+.activities h1 {
+	grid-area: 1 / 2 / 2 / 12;
+}
+.activities p:nth-of-type(1) {
+	grid-area: 2 / 2 / 3 / 12;
+}
+.activities p:nth-of-type(2) {
+	grid-area: 3 / 2 / 4 / 12;
+}
+.activities ul {
+	grid-area: 4 / 2 / 5 / 12;
+	list-style: none;
+	padding: 0;
+}
+.activities li {
+	font-size: 1.125rem;
+	line-height: 1.75rem;
+}
+.activities ul a {
+	color: #444;
+	font-size : 1.25rem;
+	line-height: 1.5rem;
+	text-decoration: underline solid hsla(0, 0%, 20%, 1);
+}
+.activities ul a:hover, .activities ul a:focus {
+	border-bottom: 3px solid hsla(0, 0%, 20%, 1);
+	text-decoration: none;
+	transition: .1s;
+}
+/* ------ PROJECTS PAGE ------ */
+.project-page__intro p:nth-of-type(1) {
+	padding-right: 16rem;
+}
+section.featured-projects {
+	display: grid;
+	grid-gap: 2rem;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: 3;
+	margin-bottom: 2rem;
+	width: 100%;
+}
+section.featured-projects h2 {
+	margin-bottom: -1.5rem;
+}
+.featured-project:nth-of-type(1) {
+	grid-area: 1 / 1 / 2 / 5;
+}
+.featured-project:nth-of-type(2) {
+	grid-area: 1 / 5 / 2 / 9;
+}
+.featured-project:nth-of-type(3) {
+	grid-area: 1 / 9 / 2 / 13;
+}
+.featured-project a, .mellon-project a {
+	border-bottom: 3px solid #ccc;
+}
+.featured-project a:hover, .mellon-project a:hover {
+	text-decoration: none;
+}
+.featured-project img, .mellon-project img {
+	height: 35vh;
+	object-fit: cover;
+	object-position: 50% 0;
+	width: 100%;
+}
+.mellon-project img {
+	height: 40vh;
+	object-position: 50% 40%;
+}
+.featured-project p, .mellon-project p {
+	font-size: 1rem;
+	line-height: 1.75rem;
+}
+section.mellon-projects {
+	display: grid;
+	grid-gap: 2rem;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: auto;
+	margin-bottom: 2rem;
+	width: 100%;
+}
+section.mellon-projects h2 {
+	grid-area: 1 / 1 / 2 / 13;
+	margin-bottom: -1.5rem;
+}
+section.mellon-projects p {
+	grid-row: 2 / 3;
+	grid-column: 1 / 10;
+}
+.mellon-project:nth-of-type(1) {
+	grid-row: 3 / 4;
+	grid-column: 1 / 7;
+}
+.mellon-project:nth-of-type(2) {
+	grid-row: 3 / 4;
+	grid-column: 7 / 13;
+}
+.mellon-project:nth-of-type(3) {
+	grid-row: 4 / 5;
+	grid-column: 1 / 7;
+}
+.mellon-project:nth-of-type(4) {
+	grid-row: 4 / 5;
+	grid-column: 7 / 13;
+}
+.mellon-project p {
+	font-size: 1rem;
+	line-height: 1.75rem;
+}
+/* ------ PROJECTS PAGE MOBILE - SMALL ------ */
+@media screen and (max-width: 575px) {
+	.featured-project img, .mellon-project img { 
+		padding-right: 1.325rem; /* check to see if there's a bootstrap conflict here ??? */
+	}
+	.featured-project:nth-of-type(1) {
+		grid-area: 1 / 1 / 2 / 13;
+	}
+	.featured-project:nth-of-type(2) {
+		grid-area: 2 / 1 / 3 / 13;
+	}
+	.featured-project:nth-of-type(3) {
+		grid-area: 3 / 1 / 4 / 13;
+	}
+	.featured-project img {
+		padding-right: .25rem;
+	}
+	.featured-project p {
+		margin: 1rem 1rem 0 0;
+	}
+	section.mellon-projects {
+		margin-bottom: 1.5rem;
+	}
+	section.mellon-projects h2 {
+		margin: 1.5rem 1rem -1.5rem 0;
+	}
+	section.mellon-projects p {
+		grid-area: 2 / 1 / 3 / 13;
+		margin: 1rem 1rem 0 0;
+	}
+	.mellon-project:nth-of-type(1) {
+		grid-row: 3 / 4;
+		grid-column: 1 / 13
+	}
+	.mellon-project:nth-of-type(2) {
+		grid-row: 4 / 5;
+		grid-column: 1 / 13
+	}
+	.mellon-project:nth-of-type(3) {
+		grid-row: 5 / 6;
+		grid-column: 1 / 13
+	}
+	.mellon-project:nth-of-type(4) {
+		grid-row: 6 / 7;
+		grid-column: 1 / 13
+	}	
+	.project-page__intro p:nth-of-type(1) {
+		padding-right: 1rem;
+	}
+}
+/* ------ PROJECTS PAGE TABLET ------ */
+@media screen and (min-width: 576px) and (max-width: 768px) {
+	.container {
+		margin: 0;
+		padding: 0 2rem;
+		width: 100%;
+	}
+	.project-page__intro p:nth-of-type(1) {
+		padding-right: 1rem;
+	}
+	.featured-project p {
+		line-height: 1.625rem;
+		margin: .75rem 0 0 0;
+	}
+	section.mellon-projects p {
+		grid-area: 2 / 1 / 3 / 13;
+		margin: 1rem 0 0 0;
+	}
+}
+
+
+/* ------ INDIVIDUAL PROJECT PAGES ----- */
+.entry-header .entry-title {
+	font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    padding-top: 1.5rem;
+}
+.project-summary {
+	margin-right: 1rem;
+}
+.lead {
+	font-family: 'Freight Sans Pro', Helvetica, Arial, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 2.125rem;
+    margin-bottom: 1.25rem;
+}
+.project-description p {
+	font-family: 'Freight Sans Pro', Helvetica, Arial, sans-serif;
+    font-size: 1.125rem ;
+    font-weight: 300;
+    line-height: 2rem;	
+}
+.project-description ul li {
+	color: #444;
+	font-size: 1.125rem;
+	font-weight: 300;
+	line-height: 2rem;
+}
+.project-data {
+	margin-left: 1rem;
+}
+.project-data p {
+	font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+	font-size: 1rem;
+	line-height: 1.75rem;
+}
+.project-data a, .project-description a, .project-summary a {
+	border-bottom: 3px solid #ccc;
+}
+.project-data a:hover, .project-description a:hover , .project-summary a:hover {
+	text-decoration: none;
+}
+.project-data p.btn, .project-data p a.btn {
+	border-bottom: none;
+	font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+	font-size: .75rem;
+	font-weight: 800;	
+}
+.entry-footer .cat-links, .entry-footer .tags-links {
+	font-family: 'IBM Plex Sans Condensed', Helvetica, Arial, sans-serif;
+}
+.entry-footer .cat-links a , .entry-footer .tags-links a {
+		color: hsla(120, 39%, 33%, 1);
+}
+
+/* ------ INDIVIDUAL PROJECT PAGES MOBILE - SMALL ------ */
+
+@media screen and (max-width: 575px) {
+	.lead {
+		font-size: 1.125rem;
+		line-height: 1.825rem;
+	}
+	.project-data {
+		margin-left: 0;
+	}	
+}
+/* ------ INDIVIDUAL PROJECT PAGES TABLET ------ */
+@media screen and (min-width: 576px) and (max-width: 768px) {
+	.project-data {
+		margin-left: 0;
+	}
+}
+
+
+/* ------ WORKSHOPS PAGE ------ */
+.workshops-page {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: auto;
+}
+.workshops-page h1 {
+	grid-area: 1 / 1 / 2 / 13;
+}
+.workshops-page .alert {
+	grid-area: 2 / 1 / 3 / 13;
+	margin-bottom: -.5rem;
+}
+.workshops-list {
+	background-color: #745d54;
+	grid-area: 3 / 1 / 4 / 13;
+	margin-bottom: 3rem;
+	padding: 1rem 0;
+	text-align: center;	
+}
+.workshops-list li {
+	font-size: 1.25rem;
+	font-weight: 500;
+	list-style: none;
+}
+.workshops-list a, .workshops-list a:visited, .workshops-list a:focus {
+	color: #fff;
+}
+.workshop-group {
+	background-clip: padding-box;
+	border-top: 48px solid transparent;
+	grid-column-start: 3;
+	grid-column-end: 11;
+	padding: 1rem 0;
+	position: relative;
+	margin: -40px 0 1.25rem 0;
+}
+.workshop-group a {
+	border-bottom: 3px solid #ccc;
+}
+.workshop-group a:hover {
+	text-decoration: none;
+}
+a.course-material {
+	border-bottom: none;
+	color: #777;
+	font-weight: 600;
+}
+a.course-material:hover {
+	color: hsla(120, 39%, 40%, 1);
+}
+a.course-material:visited, a.course-material:focus {
+	color: #777;
+}
+.entry-content .alert a {
+	color: #333;
+	font-weight: 600;
+}
+.workshop-group:nth-of-type(1) {
+	padding-top: 0;
+}
+.workshop-group:nth-last-of-type(1) {
+	margin-bottom: 0;
+}
+.workshop-group > h3 {
+	margin-top: 2rem;
+}
+.workshop-group > h3:nth-of-type(1) {
+	margin-top: .5rem;
+}
+/* ------ INDIVIDUAL EXPERTISE TABLET - MEDIUM ------ */
+@media screen and (min-width: 576px) and (max-width: 768px) {
+	.workshop-group {
+		grid-column-start: 2;
+		grid-column-end: 12;
+	}
+}
+/* ------ WORKSHOPS PAGE MOBILE - SMALL ------ */
+@media screen and (max-width: 575px) {
+	.workshops-list {
+		padding: 1rem;
+		margin-bottom: 2rem;
+	}
+	.workshops-list li {
+		font-size: 1.125rem;
+	}
+	.workshop-group {
+		grid-column-start: 1;
+		grid-column-end: 13;
+		padding: 1rem;
+	}
+}
+
+/* ------ ACTIVITIES/EXPERTISE PAGE ------ */
+.entry-content ul {
+	margin-top: 1.325rem;
+}
+.entry-content li {
+	margin-bottom: 1.25rem;
+}
+.activities a:visited, .activities a:focus {
+	color: #444;
+}
+
+/* ------ INDIVIDUAL ACTIVITIES/EXPERTISE PAGES ------ */
+.expertise-page h3 {
+	color: hsla(0, 0%, 0%, 1);
+	font-weight: 600;
+}
+.expertise-page b, .expertise-page strong {
+	color: hsla(0, 0%, 0%, 0.6);;
+	font-weight: 600;
+}
+.expertise-page ul {
+	margin-left: 2rem;
+}
+.expertise-page li {
+	font-size: 1.125rem;
+	line-height: 1.5rem;
+	margin-bottom: 1rem;
+}
+.expertise-paragraph p {
+	font-size: 1.25rem;
+	font-weight: 500;
+	line-height: 2.125rem;
+	margin-bottom: 4rem;
+	padding-right: 10rem;
+}
+.expertise-subject {
+	margin-bottom: 4rem;
+	padding-right: 10rem;
+}
+.expertise-subject a {
+	border-bottom: 4px solid hsla(0, 0%, 0%, 0.2);
+}
+.expertise-subject a:hover {
+	border-bottom: 4px solid hsla(0, 0%, 0%, 0.3);
+	color: hsla(0, 0%, 0%, 0.7);
+	text-decoration: none;
+}
+.expertise-subject h3 {
+	color: hsla(0, 0%, 0%, 0.65);
+	margin-top: 2rem;
+}
+.expertise-subject h3:nth-child(1) {
+	color: hsla(0, 0%, 0%, 1);
+	margin-top: 0;
+}
+p.expertise-intro {
+	font-size: 1.25rem;
+	font-weight: 500;
+	line-height: 2.125rem;
+	margin-bottom: 2rem;
+}
+.expertise-contact .su-column img {
+	margin-bottom: .5rem;
+	max-width: 15rem;
+}
+.su-column .expertise-contact p img {
+	margin-bottom: .5rem;
+	max-width: 15rem;
+}
+.expertise-contact p {
+	line-height: 1.375rem;
+	margin-bottom: 3rem;
+}
+.expertise-contact p:nth-child(1) {
+	margin-bottom: 3rem;
+}
+.expertise-contact a {
+	text-decoration: underline solid hsla(0, 0%, 0%, .2);
+}
+.expertise-contact a:hover, .expertise-contact a:focus {
+	color: hsla(0, 0%, 47%, 1);
+}
+.expertise-contact a strong, .expertise-contact strong a, .expertise-contact a b, .expertise-contact b a {
+	color: hsla(0, 0%, 0%, 1);
+	text-decoration: underline;
+}
+.expertise-contact a:hover strong, .expertise-contact a:focus strong, .expertise-contact strong a:hover, .expertise-contact strong a:focus, .expertise-contact a:hover b, .expertise-contact a:focus b, .expertise-contact b a:hover, .expertise-contact b a:focus {
+	color: hsla(0, 0%, 47%, 1);
+}
+
+/* ------ INDIVIDUAL EXPERTISE TABLET - MEDIUM ------ */
+@media screen and (min-width: 576px) and (max-width: 768px) {
+	.expertise-paragraph p, .expertise-subject {
+		padding-right: 2rem;
+	}
+}
+/* ------ INDIVIDUAL EXPERTISE MOBILE - SMALL ------ */
+@media screen and (max-width: 575px) {
+	.expertise-page ul {
+		margin-left: .5rem;
+	}
+	.expertise-paragraph p, .expertise-subject {
+		padding-right: 0;
+	}
+	p.expertise-intro {
+		margin-bottom: 1rem;
+	}
+	.expertise-subject h3 {
+		line-height: 1.5rem;
+	}
+	.expertise-contact {
+		margin-top: 3rem;
+	}
+	.expertise-contact .su-column img {
+		margin-bottom: 1rem;
+		max-width: 100%;
+	}
+	.su-column .expertise-contact p img {
+		margin-bottom: 1rem;
+		max-width: 100%;
+	}
+}
+
+
+/* ------ PEOPLE PAGE ------ */
+.people-page {
+	font-family: 'Freight Sans Pro', Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.5rem;
+    margin: 0 !important;	
+}
+.people-page span.title {
+	display: block;
+	line-height: 1.25rem;
+	margin: .5rem 0 1rem 0;
+}
+.people-page > p {
+	font-size: 1.25rem;
+	line-height: 2.25rem;
+	padding-right: 16rem;
+}
+.people-page > p a {
+	border-bottom: 4px solid #ccc;
+}
+.people-page > p a:hover {
+	text-decoration: none;
+}
+a.people__name {
+	color: #333;
+	font-weight: 600;
+}
+
+
+/* ------ PEOPLE PAGE TABLET - MEDIUM ------ */
+@media screen and (min-width: 576px) and (max-width: 768px) {
+	.people-page > p {
+		padding-right: 0;
+	}
+/*	.people-page .su-column-inner {
+		display: grid;
+		grid-gap: 1rem;
+		grid-template-columns: repeat(2, auto);
+		grid-template-rows: 1;
+	}
+	.people-page .su-column img {
+		max-width: 40%;
+		grid-area: 1 / 1 / 2 / 2;
+	}
+	.people-page .su-column-inner a.people__name {
+		grid-area: 1 / 2 / 2 / 3;
+	}
+	.people-page .su-column-inner span.title {
+		grid-area: 1 / 2 / 2 / 3;
+	}*/
+}
+	/* ------ PEOPLE PAGE MOBILE - SMALL ------ */
+@media screen and (max-width: 575px) {
+	.people-page > p {
+		padding-right: 0;
+	}
+}
+
+/* ------ INDIVIDUAL BIO PAGE ------ */
+.person-page h3 {
+	font-size: 2rem;
+	line-height: 2rem;
+}
+.person-page h3 small {
+	font-size: 1.25rem;
+}
+.person-page a {
+	border-bottom: 3px solid #ccc;
+}
+.person-page a:hover {
+	text-decoration: none;
+}
+.person-page .person-page_contact a {
+	border-bottom: none;
+	color: #555;
+	font-weight: 600;
+}
+.person-page .person-page_contact a:hover {
+	color: hsla(120, 39%, 42%, 1);
+}
+
+/* ------ ABOUT PAGE ------ */
+.about-page {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(2, auto);
+}
+.about-page h2 {
+	grid-area: 1 / 3 / 2 / 11;
+}
+.about-page a {
+	border-bottom: 4px solid #ccc;
+}
+.about-page a:hover {
+	text-decoration: none;
+}
+.about-text {
+	grid-area: 2 / 3 / 3 / 11;
+}
+/* ------ ABOUT PAGE MOBILE / TABLET ------ */
+@media screen and (max-width: 768px) {
+	.about-page h2 {
+		grid-area: 1 / 2 / 2 / 12;
+	}
+	.about-text {
+		grid-area: 2 / 2 / 3 / 12;
+	}	
+}
+
+/* ------ Footer styles ------- */
+
+/* embed icomoon support -- files in common/css/ */
+
+@font-face {	font-family: 'icomoon';	src:url('/common/fonts/icomoon.eot');	src:url('/common/fonts/icomoon.eot#iefix') format('embedded-opentype'),		url('/common/fonts/icomoon.ttf') format('truetype'),		url('/common/fonts/icomoon.woff') format('woff'),		url('/common/fonts/icomoon.svg#icomoon') format('svg');/* 	font-weight: normal;	font-style: normal; */}
+
+[class^="icon-"], [class*=" icon-"] {	font-family: 'icomoon';	/* 	font-style: normal;	font-weight: normal;	font-variant: normal;	text-transform: none;	line-height: 1; */	/* Better Font Rendering =========== */	-webkit-font-smoothing: antialiased;	-moz-osx-font-smoothing: grayscale;}
+
+/* 
+This is an abbreviated set of rules -- the full set can be found in the icomoon.css file in this directory
+ */
+
+.icon-office:before {	content: "\e900";}
+.icon-books:before {	content: "\e92d";}
+.icon-library:before {	content: "\e92e";}
+.icon-clock:before {	content: "\e95b";}
+.icon-calendar:before {	content: "\e902";}
+.icon-display:before {	content: "\e904";}
+.icon-bubble:before {	content: "\e974";}
+.icon-bubbles4:before {	content: "\e979";}
+.icon-users:before {	content: "\e906";}
+.icon-quotes-left:before {	content: "\e97f";}
+.icon-search:before {	content: "\e907";}
+.icon-accessibility:before {	content: "\e90a";}
+.icon-info:before {	content: "\e90e";}
+.icon-sort-alpha-asc:before {	content: "\ea48";}
+
+.icomoon {
+    font-size : 2em ;
+}
+
+@media (max-width : 990px) {
+	footer {
+        padding-left : 20% ;
+    }
+}
+
+footer {
+    background-color : #ffedd6 ;
+    padding-top : 20px ; 
+    color : #4E3629 ;
+    font-family: freight-sans-pro, Arial, sans-serif ;
+    line-height : 1 ;
+}
+
+footer.row {
+	margin : 20px 0px 0px 0px ; 
+	padding : 0px ; 
+}
+
+footer a {
+    color : #4E3629 !important ;
+    text-decoration : none ; 
+    border-bottom : 1px dotted #FFD5A3 ;
+}
+
+footer .icon {
+    font-size : 1.5em ;
+    margin-left : 0px ; 
+    display : inline-block ;  
+}
+
+footer h2 {
+    font-size : 1em ; 
+    display : inline-block ; 
+    font-weight : bold ; 
+    margin-bottom : 2px ;
+    margin-top : 2px ;  
+    padding : 0px ; 
+}
+
+footer ul {
+    list-style-type : none ; 
+}
+
+footer ul.inline-list li {
+    float : left ; 
+    padding-right : 5px ; 
+}
+
+footer li {
+	line-height : 1 ;
+}
+
+footer #meta_info .contact li a {
+    font-size : 1.2em ; 
+}
+
+footer a:hover {
+    text-decoration : none ; 
+    border-bottom : 1px dotted #000 ;   
+}
+
+footer .lib_footer_icons a {
+    border : 0px ; 
+}
+
+footer .col-md-3 {
+	width: 100%;
+	padding : 0px ; 
+}
+
+@media (min-width : 992px) {
+	footer .col-md-3 {
+		width : 25%;
+		float : left ; 
+		position : relative ; 
+		min-height : 1px ; 
+		padding : 15px ; 
+	}
+}
+
+footer .screen_reader {
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+footer li.physaddress {
+	line-height : 1.4 ; 
+	font-size : .9rem ; 
+}
+
+.entry-footer {
+	background-color : #fff !important ; 
+}
+
+/* ------ End Footer styles ------- */
