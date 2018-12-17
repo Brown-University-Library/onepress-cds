@@ -19,8 +19,7 @@ $layout = get_theme_mod( 'onepress_layout' );
 				</div>
 				<div style="width : 50% ; float : right ; margin-top : 6px ;  " >
 				  <div style="float : right ; ">
-				        <label for="q" value="search box" />
-                      <input style="border-radius : 4px 0px 0px 4px ; width : 270px ; height : 25px ; font-size : .8em ; margin : 0px ; " id="q" name="q" placeholder="Enter keywords to search library resources" type="text" value=""  />
+				        <input aria-label="search" style="border-radius : 4px 0px 0px 4px ; width : 270px ; height : 25px ; font-size : .8em ; margin : 0px ; " id="q" name="q" placeholder="Enter keywords to search library resources" type="text" value=""  />
                     <button type="submit" class="btn" style="width : 50px ; height : 25px ; background-color : #FFC72C ; font-size : .7em ; color : #4E3629 ; padding : 0px ; border-radius : 0px 4px 4px 0px ; margin : 0px 0px 0px -6px ; " id="search">
                         <span class="submit-search-text">Search</span>
                     </button>
