@@ -9,20 +9,26 @@
  * @package OnePress
  */
 ?>
-    <footer id="colophon" class="site-footer" role="contentinfo">
+
+    <div id="colophon" class="site-footer" role="contentinfo">
+<!--
             <div class="footer-connect">
                 <div class="container">
                     <div class="row">
-
+-->
+						<?php require("/var/www/html_worfdev/includes/universal_footer_include_bootstrap.html") ; ?>
+<!--
                     </div>
                 </div>
             </div>
+-->
 
         <!-- .site-info -->
 
-    </footer><!-- #colophon -->
+    </div><!-- #colophon -->
 
 </div><!-- #page -->
+
 
 <?php wp_footer(); ?>
 
