@@ -1436,6 +1436,99 @@ a.people__name {
 	}	
 }
 
+
+/* ------ fix the flow of the header links ------- */
+
+header#masthead .container {
+	width: 100% ;
+	max-width: 100%;
+	text-align : center ; 
+	font-size : .7em ;
+}
+
+.onepress-menu a {
+	letter-spacing: -.018em;
+}
+
+div.page-header input#q {
+	width : 300px !important ; 
+}
+
+div.page-header button#search {
+	width : 70px !important ; 
+}
+
+/* ------ fix how the search box and button look and break ------- */
+
+.submit-search-text {
+	padding : 0px 5px ; 
+}
+
+button.btn {
+	width : 60px !important ; 
+}
+
+@media (max-width: 991px) {
+	
+	div.page-header input#q {
+		width : 100px !important ; 
+		border-radius: 4px 4px 4px 4px !important;
+	}
+	
+	div.page-header button#search {
+		width : 50px !important ; 
+		margin : 1px 0px 0px 0px !important ; 
+		border-radius: 4px 4px 4px 4px !important;
+	}		
+
+	.submit-search-text {
+		font-size : .8em ; 
+	}
+}
+
+
+/* ------ make Project page list and People page lists into a single div that wraps across three columns automatically on a wide screen ------- */
+
+/* 
+ul.su-posts-list-loop a {
+	border-bottom: 3px solid #ccc;
+	line-height : 1.8 ; 
+}
+ */
+
+@media (min-width: 991px) {
+	ul.su-posts-list-loop, .people-page .students, .people-page .alumni ul {
+		column-count: 3 ; 
+		column-width : auto ; 
+		column-gap : 40px ; 
+		column-fill : auto ; 
+		margin-left : 0px ; 
+		padding-left : 0px ;
+	}
+
+	ul.su-posts-list-loop li {
+		display : inline-block ;
+		list-style-type : disc ; 
+		margin-left : 0px ; 
+	}
+
+	ul.su-posts-list-loop li:before {
+	  content: '\2022';
+	  margin-right: 0.5em;
+	}
+
+	ul.su-posts-list-loop li:after {
+		white-space : pre-wrap ; 
+		content: '\0009\0009\0009\0009\0009\0009\0009\0009\0009\0009';
+	}
+
+	.people-page .alumni ul li {
+		margin-top : 0px ; 
+	}
+
+}
+
+
 /* ------ Footer styles ------- */
 
 /* embed icomoon support -- files in common/css/ */
